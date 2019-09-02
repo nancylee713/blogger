@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.save
-    redirect_to artiapp/views/articles/new.html.erbcle_path(@article)
+    redirect_to article_path(@article)
   end
 
   private

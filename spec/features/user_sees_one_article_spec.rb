@@ -39,4 +39,16 @@ describe "user sees one article" do
 
     end
   end
+
+  describe "user sees number of comments in comment header" do
+    it "displays total number of comments per article" do
+      article_1 = Article.create!(title: "Article 1", body: "Sample text")
+      comment_1 = article_1.comments.create(author_name: "Me", body: "Commenty comments")
+      comment_2 = article_1.comments.create(author_name: "You", body: "So much to say")
+
+      visit article_path(article_1)
+
+      expect(page).to have_content("Comments (#{article_1.comments.size})")
+    end
+  end
 end
